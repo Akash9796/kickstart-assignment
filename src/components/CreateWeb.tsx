@@ -85,9 +85,9 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-white rounded-lg w-[50%] max-h-[90%] p-4">
-        <div className="flex justify-between items-center border-b pb-2 mb-2">
-          <h2 className="text-lg font-bold">Create Webinar</h2>
+      <div className="bg-white rounded-lg w-[50vw] max-h-[90vh] p-[1em]">
+        <div className="flex justify-between items-center border-b pb-[1em] mb-[.5em]">
+          <h2 className="text-[1em] font-bold">Create Webinar</h2>
           <FaTimes className="cursor-pointer text-lg" onClick={onClose} />
         </div>
         <form onSubmit={handleCreateWebinar}>

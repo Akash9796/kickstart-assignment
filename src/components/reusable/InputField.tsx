@@ -30,7 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
         {required && <span className="text-red-500">*</span>}
       </label>
       {isFileInput ? (
-        <div className="border border-gray-300 rounded flex items-center justify-center cursor-pointer w-32 h-32">
+        <div className="border border-gray-300 rounded flex items-center justify-center cursor-pointer w-[10vw] h-[20vh]">
           <input
             type="file"
             name={name}
@@ -57,7 +57,7 @@ const InputField: React.FC<InputFieldProps> = ({
       ) : (
         <input
           type={type}
-          className="mt-1 w-full border border-gray-300 rounded bg-gray-100 text-gray-700 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-[.5em] w-full border border-gray-300 rounded bg-gray-100 text-gray-700 text-[1em] focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={placeholder}
           onChange={onChange}
           value={value ?? ""}
