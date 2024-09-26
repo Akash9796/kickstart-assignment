@@ -84,9 +84,9 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-white rounded-lg w-[50vw] max-h-[90vh] p-[1em]">
-        <div className="flex justify-between items-center border-b pb-[.2em] mb-[.5em]">
-          <h2 className="text-[1em] font-bold">Create Webinar</h2>
+      <div className="bg-white rounded-lg w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[50vw] max-h-[90vh] p-4">
+        <div className="flex justify-between items-center border-b pb-2 mb-4">
+          <h2 className="text-lg font-bold">Create Webinar</h2>
           <FaTimes className="cursor-pointer text-lg" onClick={onClose} />
         </div>
         <form onSubmit={handleCreateWebinar}>
@@ -96,7 +96,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
             </div>
             <div className="pt-2 col-span-11">
               <h3 className="font-semibold text-md">Instructor Details</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                 <div className="space-y-2">
                   <InputField
                     label="Instructor Name"
@@ -158,7 +158,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                   onChange={handleChange}
                   value={formValues.webinarTitle}
                 />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <InputField
                     label="Start Date"
                     required
@@ -206,6 +206,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
       </div>
     </div>
   );
+  
 };
 
 export default CreateWeb;

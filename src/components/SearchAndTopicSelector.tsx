@@ -66,16 +66,16 @@ const SearchAndTopicSelector: React.FC = () => {
   }, [webinars, dispatch]);
 
   return (
-    <div className="ml-20 mb-5 border flex justify-between items-center w-[85%]">
+    <div className="lg:ml-20 mb-5 border flex flex-col sm:flex-row justify-between items-center w-full sm:w-[85%]">
       <input
         type="text"
         placeholder="Search..."
-        className="w-1/3 m-5 p-2 border border-gray-300 rounded-md"
+        className="w-full sm:w-1/3 m-2 p-2 border border-gray-300 rounded-md"
         value={searchTerm}
         onChange={onSearchChange}
       />
       <select
-        className="w-1/5 p-2 m-4 border border-gray-300 rounded-md"
+        className="w-full sm:w-1/5 p-2 m-2 border border-gray-300 rounded-md"
         onChange={onTopicSelect}
       >
         <option value="">Select a topic</option>

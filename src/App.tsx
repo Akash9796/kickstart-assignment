@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 md:p-8">
       <Header onAddWebinar={() => setIsPopupOpen(true)} />
       <SearchAndTopicSelector />
       <WebinarList handleEditWeb={handleEditWeb} />
