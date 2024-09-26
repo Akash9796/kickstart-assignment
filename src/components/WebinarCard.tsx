@@ -17,7 +17,7 @@ const WebinarCard: React.FC<WebinarProps> = ({
   const { bgColor, textColor } = useRandomBgColor();
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 flex flex-col justify-between w-96 h-80 ">
+    <div className="bg-white shadow-md rounded-lg p-4 flex flex-col justify-between  w-[25vw] max-h-[60vh]">
       <div
         className={`p-5 flex items-center justify-between ${bgColor} rounded-lg`}
       >
