@@ -28,7 +28,6 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
     endTime: "",
   });
 
-
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -86,12 +85,12 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-white rounded-lg w-[50vw] max-h-[90vh] p-[1em]">
-        <div className="flex justify-between items-center border-b pb-[1em] mb-[.5em]">
+        <div className="flex justify-between items-center border-b pb-[.2em] mb-[.5em]">
           <h2 className="text-[1em] font-bold">Create Webinar</h2>
           <FaTimes className="cursor-pointer text-lg" onClick={onClose} />
         </div>
         <form onSubmit={handleCreateWebinar}>
-          <div className="mb-4 grid grid-cols-12">
+          <div className="grid grid-cols-12">
             <div className="pt-2 text-2xl flex items-start justify-start col-span-1">
               <GoPeople />
             </div>
@@ -144,7 +143,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
               </div>
             </div>
           </div>
-          <div className="mb-4 grid grid-cols-12">
+          <div className="mb-2 grid grid-cols-12">
             <div className="pt-2 text-2xl flex items-start justify-start col-span-1">
               <GoDeviceCameraVideo />
             </div>
@@ -188,7 +187,6 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
               </div>
             </div>
           </div>
-
           <div className="flex justify-start space-x-2 pt-2 border-t border-gray-200">
             <button
               type="submit"
