@@ -17,9 +17,7 @@ const SearchAndTopicSelector: React.FC = () => {
 
   const handleSearch = useCallback(
     debounce((term: string) => {
-      if (!term) {
-        console.log("term not");
-        
+      if (!term) {        
         dispatch(updateSearchFilterWebs(webinars));
         return
       }

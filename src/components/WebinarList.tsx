@@ -37,8 +37,6 @@ const WebinarList: React.FC<WebinarListProps> = ({ handleEditWeb }) => {
     setFinalWebinars(webinars);
   }, [filterTopic, filteredWebinars, webinars]);
 
-  console.log("finalWebinars", finalWebinars);
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4 sm:px-10 lg:px-20 scroll-thin overflow-y-auto mb-11">
       {finalWebinars.length > 0 ? (
