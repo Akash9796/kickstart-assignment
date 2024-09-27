@@ -29,28 +29,32 @@ const WebinarList: React.FC<WebinarListProps> = ({ handleEditWeb }) => {
       return;
     }
 
-    if (filteredWebinars.length > 0) {
-      setFinalWebinars(filteredWebinars);
-      return;
+    if (filteredWebinars) {
+        setFinalWebinars(filteredWebinars);
+        return;
     }
 
     setFinalWebinars(webinars);
   }, [filterTopic, filteredWebinars, webinars]);
 
+  console.log("finalWebinars", finalWebinars);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 px-4 sm:px-10 lg:px-20 scroll-thin overflow-y-auto mb-11">
-  {finalWebinars.map((webinar: WebinarData) => (
-    <WebinarCard
-      key={webinar?.id}
-      webinar={webinar}
-      deleteWebinar={deleteWebinar}
-      handleEditWeb={handleEditWeb}
-    />
-  ))}
-</div>
+      {finalWebinars.length > 0 ? (
+        finalWebinars.map((webinar: WebinarData) => (
+          <WebinarCard
+            key={webinar?.id}
+            webinar={webinar}
+            deleteWebinar={deleteWebinar}
+            handleEditWeb={handleEditWeb}
+          />
+        ))
+      ) : (
+        <div>Search not Found</div>
+      )}
+    </div>
   );
-  
-
 };
 
 export default WebinarList;

@@ -17,6 +17,12 @@ const SearchAndTopicSelector: React.FC = () => {
 
   const handleSearch = useCallback(
     debounce((term: string) => {
+      if (!term) {
+        console.log("term not");
+        
+        dispatch(updateSearchFilterWebs(webinars));
+        return
+      }
       const searchTerms = term.trim().toLowerCase().split(/\s+/);
 
       const filtered = webinars.filter((webinar: WebinarData) =>
