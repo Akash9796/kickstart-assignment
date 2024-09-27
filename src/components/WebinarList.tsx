@@ -6,9 +6,13 @@ import { useEffect, useState } from "react";
 
 interface WebinarListProps {
   handleEditWeb: (id: string) => void;
+  isSearchActive: boolean;
 }
 
-const WebinarList: React.FC<WebinarListProps> = ({ handleEditWeb }) => {
+const WebinarList: React.FC<WebinarListProps> = ({
+  handleEditWeb,
+  isSearchActive,
+}) => {
   const dispatch = useDispatch();
 
   const { webinars, filteredWebinars, filterTopic } = useTypedSelector(
@@ -30,8 +34,11 @@ const WebinarList: React.FC<WebinarListProps> = ({ handleEditWeb }) => {
     }
 
     if (filteredWebinars) {
+      if (isSearchActive) {
         setFinalWebinars(filteredWebinars);
+
         return;
+      }
     }
 
     setFinalWebinars(webinars);

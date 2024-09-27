@@ -8,7 +8,13 @@ import {
 import { useTypedSelector, WebinarData } from "../types/webinarType";
 import debounce from "lodash.debounce";
 
-const SearchAndTopicSelector: React.FC = () => {
+interface HeaderProps {
+  setIsSearchActive: (val: boolean) => void;
+}
+
+const SearchAndTopicSelector: React.FC<HeaderProps> = ({
+  setIsSearchActive,
+}) => {
   const dispatch = useDispatch();
   const { webinars, majorTopics } = useTypedSelector(
     (state) => state.webinarsData
@@ -17,10 +23,14 @@ const SearchAndTopicSelector: React.FC = () => {
 
   const handleSearch = useCallback(
     debounce((term: string) => {
-      if (!term) {        
+      if (!term) {
+        setIsSearchActive(false);
         dispatch(updateSearchFilterWebs(webinars));
-        return
+        return;
+      } else {
+        setIsSearchActive(true);
       }
+
       const searchTerms = term.trim().toLowerCase().split(/\s+/);
 
       const filtered = webinars.filter((webinar: WebinarData) =>
