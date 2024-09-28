@@ -84,20 +84,27 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-white rounded-lg w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[50vw] max-h-[90vh] p-4">
-        <div className="flex justify-between items-center border-b pb-2 mb-4">
+      <div
+        className="bg-white rounded-lg w-full h-fit
+  max-h-[88vh] min-h-[85vh] flex flex-col justify-between
+  sm:w-[90vw] md:w-[70vw] lg:w-[50vw] max-w-[85vw] border border-red-300 overflow-y-auto"
+      >
+        <div className="flex justify-between p-2 items-center border-b border-gray-500 pb-3">
           <h2 className="text-lg font-bold">Create Webinar</h2>
-          <FaTimes className="cursor-pointer text-lg" onClick={onClose} />
+          <FaTimes className="cursor-pointer text-gray-500" onClick={onClose} />
         </div>
-        <form onSubmit={handleCreateWebinar}>
-          <div className="grid grid-cols-12">
-            <div className="pt-2 text-2xl flex items-start justify-start col-span-1">
+        <form
+          onSubmit={handleCreateWebinar}
+          className="flex flex-col justify-between gap-5 mx-5  text-gray-700 "
+        >
+          <div className="grid grid-cols-12 h-full">
+            <div className="pt-3 text-xl flex items-start justify-start col-span-1">
               <GoPeople />
             </div>
             <div className="pt-2 col-span-11">
-              <h3 className="font-semibold text-md">Instructor Details</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
-                <div className="space-y-2">
+              <h3 className="font-semibold text-[3vh] ">Instructor Details</h3>
+              <div className=" grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+                <div className="space-y-2 mr-10 flex flex-col h-full sm:pr-0">
                   <InputField
                     label="Instructor Name"
                     required
@@ -123,7 +130,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     value={formValues.instructorCompany}
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 pr-5">
                   <InputField
                     label="Instructor Image"
                     isFileInput
@@ -143,7 +150,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
               </div>
             </div>
           </div>
-          <div className="mb-2 grid grid-cols-12">
+          <div className="grid grid-cols-12  h-full">
             <div className="pt-2 text-2xl flex items-start justify-start col-span-1">
               <GoDeviceCameraVideo />
             </div>
@@ -187,26 +194,25 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
               </div>
             </div>
           </div>
-          <div className="flex justify-start space-x-2 pt-2 border-t border-gray-200">
-            <button
-              type="submit"
-              className="bg-blue-700 text-white px-3 py-1 rounded-lg"
-            >
-              {editWeb ? "Update Webinar" : "Create Webinar"}
-            </button>
-            <button
-              type="button"
-              className="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg"
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-          </div>
         </form>
+        <div className="flex justify-start gap-5 p-3 border-t border-gray-200">
+          <button
+            type="submit"
+            className="bg-blue-700 text-white px-3 py-1 rounded-lg"
+          >
+            {editWeb ? "Update Webinar" : "Create Webinar"}
+          </button>
+          <button
+            type="button"
+            className="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg"
+            onClick={onClose}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
-  
 };
 
 export default CreateWeb;

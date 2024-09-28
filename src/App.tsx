@@ -4,7 +4,6 @@ import WebinarList from "./components/WebinarList";
 import "./index.css";
 import CreateWeb from "./components/CreateWeb";
 import { useTypedSelector, WebinarData } from "./types/webinarType";
-import SearchAndTopicSelector from "./components/SearchAndTopicSelector";
 
 const App = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -23,8 +22,11 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 md:p-8">
       <Header onAddWebinar={() => setIsPopupOpen(true)} />
-      <SearchAndTopicSelector setIsSearchActive={setIsSearchActive}/>
-      <WebinarList handleEditWeb={handleEditWeb} isSearchActive={isSearchActive}/>
+      <WebinarList
+        handleEditWeb={handleEditWeb}
+        isSearchActive={isSearchActive}
+        setIsSearchActive={setIsSearchActive}
+      />
       {isPopupOpen && (
         <CreateWeb
           onClose={() => {

@@ -24,13 +24,14 @@ const InputField: React.FC<InputFieldProps> = ({
   isFileInput = false,
 }) => {
   return (
-    <div>
-      <label className="block text-sm font-medium">
+    <div className="">
+      <label className="block text-[2vh] font-medium">
         {label}
         {required && <span className="text-red-500">*</span>}
       </label>
       {isFileInput ? (
-        <div className="border border-gray-300 rounded flex items-center justify-center cursor-pointer w-[10vw] h-[20vh]">
+        <div className="border-2 border-gray-400 border-dashed rounded-lg cursor-pointer w-[15.5vh] h-[15.5vh] bg-gray-200 sm:w-[12vh] sm:h-[12vh] md:w-[15.5vh] md:h-[15.5vh]">
+
           <input
             type="file"
             name={name}
@@ -50,14 +51,14 @@ const InputField: React.FC<InputFieldProps> = ({
                 className="object-cover w-full h-full"
               />
             ) : (
-              <span className="text-gray-500">Click to add image</span>
+              <span className="text-gray-500 text-5xl">+</span>
             )}
           </label>
         </div>
       ) : (
         <input
           type={type}
-          className="mt-[.5em] w-full border border-gray-300 rounded bg-gray-100 text-gray-700 text-[1em] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-[.5em] w-full border text-sm border-gray-300 rounded bg-gray-100 text-gray p-[.1em] box-border focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={placeholder}
           onChange={onChange}
           value={value ?? ""}

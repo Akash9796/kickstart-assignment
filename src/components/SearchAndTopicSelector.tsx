@@ -80,7 +80,7 @@ const SearchAndTopicSelector: React.FC<HeaderProps> = ({
   }, [webinars, dispatch]);
 
   return (
-    <div className="lg:ml-20 mb-5 border flex flex-col sm:flex-row justify-between items-center w-full sm:w-[85%]">
+    <div className="mb- flex flex-col sm:flex-row justify-between items-center w-full sm:w-[90%]">
       <input
         type="text"
         placeholder="Search..."

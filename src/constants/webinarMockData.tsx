@@ -119,6 +119,7 @@ export const Months = [
   "Oct",
   "Nov",
   "Dec",
+  "Jan"
 ];
 
 export default webinarData;
