@@ -28,6 +28,67 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
     endTime: "",
   });
 
+  const [errors, setErrors] = useState({
+    instructorName: "",
+    instructorRole: "",
+    instructorCompany: "",
+    topics: "",
+    webinarTitle: "",
+    startDate: "",
+    startTime: "",
+    endTime: "",
+  });
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = {
+      instructorName: "",
+      instructorRole: "",
+      instructorCompany: "",
+      topics: "",
+      webinarTitle: "",
+      startDate: "",
+      startTime: "",
+      endTime: "",
+    };
+
+    if (!formValues.instructorName.trim()) {
+      newErrors.instructorName = "Instructor Name is required";
+      valid = false;
+    }
+    if (!formValues.instructorRole.trim()) {
+      newErrors.instructorRole = "Instructor Role is required";
+      valid = false;
+    }
+    if (!formValues.instructorCompany.trim()) {
+      newErrors.instructorCompany = "Instructor Company is required";
+      valid = false;
+    }
+    if (!formValues.topics.trim()) {
+      newErrors.topics = "Topics are required";
+      valid = false;
+    }
+    if (!formValues.webinarTitle.trim()) {
+      newErrors.webinarTitle = "Webinar Title is required";
+      valid = false;
+    }
+    if (!formValues.startDate) {
+      newErrors.startDate = "Start Date is required";
+      valid = false;
+    }
+    if (!formValues.startTime) {
+      newErrors.startTime = "Start Time is required";
+      valid = false;
+    }
+    if (!formValues.endTime) {
+      newErrors.endTime = "End Time is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -38,6 +99,10 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
 
   const handleCreateWebinar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     const newWebinar: WebinarData = {
       id: editWeb?.id || `webinar-${Math.random().toString(36).substr(2, 9)}`,
@@ -85,9 +150,8 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
       <div
-        className="bg-white rounded-lg w-full h-fit
-  max-h-[88vh] min-h-[85vh] flex flex-col justify-between
-  sm:w-[90vw] md:w-[70vw] lg:w-[50vw] max-w-[85vw] border border-red-300 overflow-y-auto"
+        className="bg-white rounded-lg md:w-[50vw] w-[80vw] max-h-[95vh] 
+         flex flex-col justify-start border border-red-300 overflow-y-auto"
       >
         <div className="flex justify-between p-2 items-center border-b border-gray-500 pb-3">
           <h2 className="text-lg font-bold">Create Webinar</h2>
@@ -95,16 +159,16 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
         </div>
         <form
           onSubmit={handleCreateWebinar}
-          className="flex flex-col justify-between gap-5 mx-5  text-gray-700 "
+          className="flex flex-col justify-between gap-5 px-5 pb-5 text-gray-700"
         >
-          <div className="grid grid-cols-12 h-full">
-            <div className="pt-3 text-xl flex items-start justify-start col-span-1">
+          <div className="grid grid-cols-12 gap-4">
+            <div className="pt-3 text-xl flex items-start col-span-1">
               <GoPeople />
             </div>
-            <div className="pt-2 col-span-11">
-              <h3 className="font-semibold text-[3vh] ">Instructor Details</h3>
-              <div className=" grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
-                <div className="space-y-2 mr-10 flex flex-col h-full sm:pr-0">
+            <div className="col-span-11">
+              <h3 className="font-semibold text-[3vh]">Instructor Details</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="space-y-2 flex flex-col">
                   <InputField
                     label="Instructor Name"
                     required
@@ -112,6 +176,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="instructorName"
                     onChange={handleChange}
                     value={formValues.instructorName}
+                    error={errors.instructorName}
                   />
                   <InputField
                     label="Instructor Role"
@@ -120,6 +185,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="instructorRole"
                     onChange={handleChange}
                     value={formValues.instructorRole}
+                    error={errors.instructorRole}
                   />
                   <InputField
                     label="Instructor Company"
@@ -128,9 +194,10 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="instructorCompany"
                     onChange={handleChange}
                     value={formValues.instructorCompany}
+                    error={errors.instructorCompany}
                   />
                 </div>
-                <div className="space-y-2 pr-5">
+                <div className="space-y-2">
                   <InputField
                     label="Instructor Image"
                     isFileInput
@@ -145,16 +212,17 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="topics"
                     onChange={handleChange}
                     value={formValues.topics}
+                    error={errors.topics}
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-12  h-full">
-            <div className="pt-2 text-2xl flex items-start justify-start col-span-1">
+          <div className="grid grid-cols-12 gap-4">
+            <div className="pt-2 text-2xl flex items-start col-span-1">
               <GoDeviceCameraVideo />
             </div>
-            <div className="pt-2 col-span-11">
+            <div className="col-span-11">
               <h3 className="font-semibold text-md">Webinar Details</h3>
               <div className="space-y-2">
                 <InputField
@@ -164,6 +232,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                   name="webinarTitle"
                   onChange={handleChange}
                   value={formValues.webinarTitle}
+                  error={errors.webinarTitle}
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <InputField
@@ -173,6 +242,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="startDate"
                     onChange={handleChange}
                     value={formValues.startDate}
+                    error={errors.startDate}
                   />
                   <InputField
                     label="Start Time"
@@ -181,6 +251,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="startTime"
                     onChange={handleChange}
                     value={formValues.startTime}
+                    error={errors.startTime}
                   />
                   <InputField
                     label="End Time"
@@ -189,27 +260,28 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
                     name="endTime"
                     onChange={handleChange}
                     value={formValues.endTime}
+                    error={errors.endTime}
                   />
                 </div>
               </div>
             </div>
           </div>
+          <div className="flex justify-start gap-5 pt-3 border-t border-gray-200">
+            <button
+              type="submit"
+              className="bg-blue-700 text-white px-3 py-1 rounded-lg"
+            >
+              {editWeb ? "Update Webinar" : "Create Webinar"}
+            </button>
+            <button
+              type="button"
+              className="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
-        <div className="flex justify-start gap-5 p-3 border-t border-gray-200">
-          <button
-            type="submit"
-            className="bg-blue-700 text-white px-3 py-1 rounded-lg"
-          >
-            {editWeb ? "Update Webinar" : "Create Webinar"}
-          </button>
-          <button
-            type="button"
-            className="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-        </div>
       </div>
     </div>
   );
