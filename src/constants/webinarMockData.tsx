@@ -2,7 +2,9 @@ const webinarData = [
   {
     id: "webinar-001",
     name: "Akash Shukla",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Senior Software Engineer",
     company: "Infosys Limited",
     topics: [
@@ -18,7 +20,9 @@ const webinarData = [
   {
     id: "webinar-002",
     name: "Rahul Verma",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Senior Frontend Developer",
     company: "HCL Technologies",
     topics: [
@@ -34,7 +38,9 @@ const webinarData = [
   {
     id: "webinar-003",
     name: "Harsh Sharma",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Fullstack MERN Developer",
     company: "TechHub Solutions",
     topics: [
@@ -50,7 +56,9 @@ const webinarData = [
   {
     id: "webinar-004",
     name: "Ankit Mehta",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Lead Frontend Engineer",
     company: "InnovateIT",
     topics: [
@@ -66,7 +74,9 @@ const webinarData = [
   {
     id: "webinar-005",
     name: "Rahul Mehra",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Frontend Architect",
     company: "DigitalWave",
     topics: [
@@ -82,7 +92,9 @@ const webinarData = [
   {
     id: "webinar-006",
     name: "Dilip Ghosh",
-    imgUrl: "",
+    imgUrl: `https://randomuser.me/api/portraits/men/${Math.floor(
+      Math.random() * 100
+    )}.jpg`,
     role: "Senior UI Developer",
     company: "UIBytes",
     topics: [
@@ -119,7 +131,7 @@ export const Months = [
   "Oct",
   "Nov",
   "Dec",
-  "Jan"
+  "Jan",
 ];
 
 export default webinarData;

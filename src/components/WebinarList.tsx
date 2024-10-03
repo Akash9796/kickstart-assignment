@@ -39,13 +39,16 @@ const WebinarList: React.FC<WebinarListProps> = ({
     if (filteredWebinars) {
       if (isSearchActive) {
         setFinalWebinars(filteredWebinars);
-
         return;
       }
     }
 
+    return;
+  }, [filterTopic, filteredWebinars]);
+
+  useEffect(() => {
     setFinalWebinars(webinars);
-  }, [filterTopic, filteredWebinars, webinars]);
+  }, [webinars]);
 
   return (
     <div className="md:flex flex-wrap justify-center gap-5 sm:grid sm:grid-cols-2 md:grid-cols-3  px-4 sm:px-10 lg:px-20  scroll-thin overflow-y-auto mb-11  max-w-[90vw]">
