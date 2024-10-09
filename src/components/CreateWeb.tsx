@@ -151,80 +151,88 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
     <div className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center">
       <div
         className="bg-white rounded-lg md:w-[50vw] w-[80vw] max-h-[95vh] 
-         flex flex-col justify-start border border-red-300 overflow-y-auto"
+         flex flex-col justify-start overflow-y-auto"
       >
-        <div className="flex justify-between p-2 items-center border-b border-gray-500 pb-3">
+        <div className="flex justify-between py-2 px-5 items-center border-b border-gray-500 pb-3">
           <h2 className="text-lg font-bold">Create Webinar</h2>
           <FaTimes className="cursor-pointer text-gray-500" onClick={onClose} />
         </div>
         <form
           onSubmit={handleCreateWebinar}
-          className="flex flex-col justify-between gap-5 px-5 pb-5 text-gray-700"
+          className="flex flex-col justify-between min-h-[70vh] max-h-[95vh] py-5 pr-5 text-gray-700 "
         >
-          <div className="grid grid-cols-12 gap-4">
-            <div className="pt-3 text-xl flex items-start col-span-1">
+          <div className="grid grid-cols-12">
+            <div className="text-xl flex items-start justify-center col-span-1 ">
               <GoPeople />
             </div>
             <div className="col-span-11">
-              <h3 className="font-semibold text-[3vh]">Instructor Details</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <div className="space-y-2 flex flex-col">
-                  <InputField
-                    label="Instructor Name"
-                    required
-                    placeholder="Type the instructor name"
-                    name="instructorName"
-                    onChange={handleChange}
-                    value={formValues.instructorName}
-                    error={errors.instructorName}
-                  />
-                  <InputField
-                    label="Instructor Role"
-                    required
-                    placeholder="Type the instructor role"
-                    name="instructorRole"
-                    onChange={handleChange}
-                    value={formValues.instructorRole}
-                    error={errors.instructorRole}
-                  />
-                  <InputField
-                    label="Instructor Company"
-                    required
-                    placeholder="Type the instructor company"
-                    name="instructorCompany"
-                    onChange={handleChange}
-                    value={formValues.instructorCompany}
-                    error={errors.instructorCompany}
-                  />
+              <h3 className="font-bold text-[.8rem]">Instructor Details</h3>
+              <div className="m-3">
+                <div className="flex flex-col sm:flex-col md:flex-row justify-between">
+                  <div className="w-full mr-0 md:mr-5">
+                    <InputField
+                      label="Instructor Name"
+                      required
+                      placeholder="Type the instructor name"
+                      name="instructorName"
+                      onChange={handleChange}
+                      value={formValues.instructorName}
+                      error={errors.instructorName}
+                    />
+                    <InputField
+                      label="Instructor Role"
+                      required
+                      placeholder="Type the instructor role"
+                      name="instructorRole"
+                      onChange={handleChange}
+                      value={formValues.instructorRole}
+                      error={errors.instructorRole}
+                    />
+                  </div>
+                  <div className="w-full mt-4 md:mt-0">
+                    <InputField
+                      label="Instructor Image"
+                      isFileInput
+                      onChange={handleImageChange}
+                      value={selectedImage}
+                      name=""
+                    />
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <InputField
-                    label="Instructor Image"
-                    isFileInput
-                    onChange={handleImageChange}
-                    value={selectedImage}
-                    name=""
-                  />
-                  <InputField
-                    label="Topics (comma separated)"
-                    required
-                    placeholder="Type the topics"
-                    name="topics"
-                    onChange={handleChange}
-                    value={formValues.topics}
-                    error={errors.topics}
-                  />
+                <div className="flex flex-col sm:flex-col md:flex-row justify-between mt-4">
+                  <div className="w-full mr-0 md:mr-5">
+                    <InputField
+                      label="Instructor Company"
+                      required
+                      placeholder="Type the instructor company"
+                      name="instructorCompany"
+                      onChange={handleChange}
+                      value={formValues.instructorCompany}
+                      error={errors.instructorCompany}
+                    />
+                  </div>
+                  <div className="w-full mt-4 md:mt-0">
+                    <InputField
+                      label="Topics"
+                      required
+                      placeholder="Type the topics"
+                      name="topics"
+                      onChange={handleChange}
+                      value={formValues.topics}
+                      error={errors.topics}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-12 gap-4">
-            <div className="pt-2 text-2xl flex items-start col-span-1">
+          <div className="grid grid-cols-12">
+            <div className="text-2xl flex items-start justify-center col-span-1">
               <GoDeviceCameraVideo />
             </div>
             <div className="col-span-11">
-              <h3 className="font-semibold text-md">Webinar Details</h3>
-              <div className="space-y-2">
+              <h3 className="font-bold text-[.8rem]">Webinar Details</h3>
+              <div className="m-3">
                 <InputField
                   label="Webinar Title"
                   required
@@ -266,7 +274,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
               </div>
             </div>
           </div>
-          <div className="flex justify-start gap-5 pt-3 border-t border-gray-200">
+          <div className="flex justify-start gap-5 px-5 pt-3 border-t border-gray-200">
             <button
               type="submit"
               className="bg-blue-700 text-white px-3 py-1 rounded-lg"
