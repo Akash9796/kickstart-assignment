@@ -159,7 +159,7 @@ const CreateWeb: React.FC<CreateWebProps> = ({ onClose, editWeb }) => {
         </div>
         <form
           onSubmit={handleCreateWebinar}
-          className="flex flex-col justify-between min-h-[70vh] max-h-[95vh] py-5 pr-5 text-gray-700 "
+          className="flex flex-col justify-between w-full h-full max-w-full py-5 pr-5 text-gray-700"
         >
           <div className="grid grid-cols-12">
             <div className="text-xl flex items-start justify-center col-span-1 ">
